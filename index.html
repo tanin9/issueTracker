@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" data-them="light">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet"
+            type="text/css" />
+        <script
+            src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+            rel="stylesheet">
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+            rel="stylesheet">
+        <title>Issues-Tracker | login</title>
+        <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+        <style>
+            
+            *{
+                 font-family: "Geist", sans-serif;
+ 
+                }
+
+            .regular-text-color{
+                color: #64748B;
+            }
+            
+            .blue{
+                background-color: #4A00FF;
+            }
+
+
+        </style>
+    </head>
+    <body class="min-h-screen max-w-md bg-base-200 mx-auto">
+
+        <div class="form py-9 ">
+
+            <div
+                class="card bg-base-100 w-full max-w-sm shrink-0 shadow mx-auto rounded-2xl">
+                <div
+                    class="card-logo flex flex-col justify-center items-center p-5">
+                    <div><img src="images/github-logo.png" alt></div>
+                    <h2 class="text-2xl font-semibold">GitHub Issues
+                        Tracker</h2>
+                    <p class="regular-text-color">Sign in to manage your
+                        issues</p>
+                </div>
+                <div class="card-body ">
+                    <fieldset class="fieldset">
+                        <label
+                            class="label text-neutral font-bold">Username</label>
+                        <input id="input-username" maxlength="5" minlength="5"
+                            type="text" class="input rounded-[5px] bg-base-200"
+                            placeholder="Enter Username" value />
+
+                        <br>
+                        <label
+                            class="label text-neutral font-bold">Password</label>
+                        <input id="input-password" maxlength="8" minlength="8"
+                            type="password"
+                            class="input rounded-[5px] bg-base-200"
+                            placeholder="Enter Password" />
+
+                        <button
+                            id="login-btn"
+                            class="btn btn-primary blue mt-4 rounded-[5px] mx-3">Sign
+                            In</button>
+                    </fieldset>
+                </div>
+                <div class="divider px-7">OR</div>
+
+                <div
+                    class="card-logo flex flex-col justify-center items-center p-5">
+                    <p class="regular-text-color p-4">Demo Credentials:</p>
+                    <p> <span class="font-semibold">Username: </span>admin</p>
+                    <p><span class="font-semibold">Password:</span> admin123</p>
+
+                </div>
+
+            </div>
+        </div>
+
+        <script src="login.js">
+
+        </script>
+
+    </body>
+</html>
