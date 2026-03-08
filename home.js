@@ -1,27 +1,3 @@
-// https://phi-lab-server.vercel.app/api/v1/lab/issues
-
-/*"bug", "help wanted", "enhancement","good first issue","documentation"
- */
-
-/*async function loadStatus() {
-  const res = await fetch(
-    "https://phi-lab-server.vercel.app/api/v1/lab/issues",
-  );
-  const resdata = await res.json();
-  const situation = resdata.data.filter(
-    (item, index, self) =>
-      index === self.findIndex((t) => t.status === item.status),
-  );
-  // console.log(resdata);
-  situation.forEach((status) => {
-    //   console.log(status);
-    const btn = document.createElement("button");
-    btn.className = "btn bg-white mx-4 text-[#64748B]  w-25";
-      btn.textContent = status.status;
-      btn.onclick = () => selectStatus(status.id);
-    statusContainer.appendChild(btn);
-  });
-}*/
 
 const statusContainer = document.getElementById("status-btn");
 const cardContainer = document.getElementById("issue-cards-container");
