@@ -55,7 +55,11 @@ async function loadIssues() {
 }
 
 function displayIssues(issues) {
-  // console.log(issues);
+    // console.log(issues);
+    
+    document.getElementById("issue-count").innerText = issues.length;
+    cardContainer.innerHTML=""; 
+
   issues.forEach((issue) => {
     // console.log(issue);
     const card = document.createElement("div");
