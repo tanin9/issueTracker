@@ -2,6 +2,58 @@
 const statusContainer = document.getElementById("status-btn");
 const cardContainer = document.getElementById("issue-cards-container");
 const loadingSpinner = document.getElementById("loading-spinner");
+const issueModal = document.getElementById("issue-modal");
+
+
+async function openIssueModal(cardId) {
+    // console.log(cardId);
+   
+    const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${cardId}`);
+    const data = await res.json();
+    const issue = data.data;
+ 
+    //  console.log(issueDetails, "data");
+    document.querySelector("#issue-modal").innerHTML = `
+    <div class="modal-box">
+                        <form method="dialog">
+                            <button
+                                class="btn btn-sm absolute right-2 top-2">✕</button>
+                        </form>
+                        <h3 class="text-2xl font-bold py-5 ">${issue.title}</h3>
+                        <div
+                            class="  mt-2 flex gap-2 justify-start items-center ">
+                            <p
+                                class="${issue.status === "open" ? "bg-green-700" : "bg-purple-700"} text-white px-3 rounded-full">${issue.status === "open" ? "Opened" : "Closed"}
+                            </p>
+                            <p> • Opened by ${issue.author} • </p>
+                            <p>${issue.createdAt.split("T")[0]}</p>
+
+                        </div>
+                        <div
+                            class="  mt-4 flex gap-2 justify-start items-center ">
+                            ${fixLavels(issue.labels)}</div>
+                        <p class="py-4">${issue.description}</p>
+
+                        <div
+                            class="bg-gray-100 rounded-xl p-5 flex gap-30">
+                            <div><p>Assignee: <br> <span class="font-bold">${issue.assignee ? issue.assignee : "Unassigned"}</span></p></div>
+                            <div><p>Priority: <br> <span
+                                        class="px-3 rounded-full border-2 flex justify-start items-center gap-1 ${priorityStyle1(issue.priority)}">${issue.priority}</span></p></div>
+
+                        </div>
+
+                        <div class="modal-action">
+                            <form method="dialog">
+                                <!-- if there is a button in form, it will close the modal -->
+                                <button class="btn btn-primary">Close</button>
+                            </form>
+                        </div>
+                    </div>
+    `;
+    
+    issueModal.showModal();
+}
+
 
 function showLoading() {
   loadingSpinner.classList.remove("hidden");
@@ -64,8 +116,9 @@ function displayIssues(issues) {
     // console.log(issue);
     const card = document.createElement("div");
 
-    card.className = `issue-card border-t-3 rounded-2xl space-y-4 bg-gray-100 shadow-xl/30 ${issue.status === "open" ? "border-green-500" : "border-purple-700"}`;
-
+    card.className = `issue-card border-t-3 rounded-2xl space-y-4 bg-gray-100 shadow-xl/30 ${issue.status === "open" ? "border-green-500" : "border-purple-700"} hover:bg-blue-100`;
+      card.onclick = () => openIssueModal(issue.id);
+      
     card.innerHTML = `<div class="px-6 pt-8">
                         <div class="flex justify-between ">
                              <div><img src="${issue.status === "open" ? "images/open.png" : "images/closed.png"}"  alt></div>
@@ -76,7 +129,7 @@ function displayIssues(issues) {
                             </div>
                         </div>
                         <div class="mb-2">
-                            <h3 class="font-semibold text-[#14px]">${issue.title}</h3>
+                            <h3 class="font-semibold text-[#14px] cursor-pointer">${issue.title}</h3>
                             <p class="text-[#12px] regular-text-color line-clamp-2">${issue.description}</p>
                         </div>
                   
@@ -114,6 +167,17 @@ function priorityStyle(p) {
   }
   if (p == "low") {
     return "text-gray-700 bg-gray-300";
+  }
+}
+function priorityStyle1(p) {
+  if (p == "high") {
+    return "text-white bg-red-500";
+  }
+  if (p == "medium") {
+    return "text-white bg-yellow-500";
+  }
+  if (p == "low") {
+    return "text-white bg-gray-500";
   }
 }
 function labelStyle(l) {
@@ -155,7 +219,7 @@ function fixLavels(fl) {
       div +
       `  <div  class="px-3 py-1 rounded-full border-2 flex gap-1 ${labelStyle(lable).color}">
            <div><i class="${labelStyle(lable).icon}"></i></div>
-           <p>${lable}</p></div> `;
+           <p>${lable.toUpperCase()}</p></div> `;
   });
   return div;
 }

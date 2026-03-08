@@ -48,6 +48,7 @@
         <main>
 
             <section class="navbar bg-base-100 shadow-sm sticky top-0 z-10 ">
+                
                 <div class="w-10 rounded-full mx-1.5">
                     <img src="images/github-logo.png" alt />
                 </div>
@@ -57,11 +58,11 @@
                 </div>
                 <div class="flex gap-2 input input-bordered"> <i
                         class="fa-solid fa-magnifying-glass regular-text-color"></i>
-                    <input type="text" placeholder="Search issues..." />
+                    <input  id="search-input" type="text" placeholder="Search issues..." />
                 </div>
 
                 <div class="flex gap-2 ">
-                    <button id="search-btn"
+                    <button id="search-btn" onclick="searchIssues()"
                         class="btn btn-primary blue  rounded-[5px] mx-3">Search</button>
                 </div>
             </section>
@@ -87,7 +88,8 @@
                     <div class="flex gap-3 items-center">
                         <div class="bg-[#ECE4FF] p-1 rounded-full"> <img
                                 src="images/Aperture.png" alt></div>
-                        <div><p class="text-2xl font-semibold"><span id="issue-count">0</span> Issues</p>
+                        <div><p class="text-2xl font-semibold"><span
+                                    id="issue-count">0</span> Issues</p>
                             <p class="regular-text-color">Track and manage your
                                 project issues</p></div>
                     </div>
@@ -102,15 +104,24 @@
             </section>
 
             <section>
-                <div id="loading-spinner" class="mt-7 justify-center items-center hidden">
-                <span class="loading loading-infinity loading-xl"></span>
+                <div id="loading-spinner"
+                    class="mt-7 justify-center items-center hidden">
+                    <span class="loading loading-infinity loading-xl"></span>
                 </div>
             </section>
+
+            <div>  <dialog id="issue-modal" class="modal">
+                    
+                </dialog>
+            </div>
+
             <section id="issue-cards-container"
                 class="  shadow-xl/20  px-10 mx-15 py-4 mt-10 mb-20 bg-white rounded-[5px] grid  sm:grid-cols-2 md:grid-cols-3 gap-4">
 
             </section>
-            <section class="  mx-30 py-4 mt-10"></section>
+            <section class="  mx-30 py-4 mt-10">
+
+            </section>
 
         </main>
         <script src="home.js">
