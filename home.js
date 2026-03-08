@@ -3,6 +3,22 @@ const statusContainer = document.getElementById("status-btn");
 const cardContainer = document.getElementById("issue-cards-container");
 const loadingSpinner = document.getElementById("loading-spinner");
 const issueModal = document.getElementById("issue-modal");
+const searchIssue = document.getElementById("search-input");
+
+async function searchIssues() {
+    const searchText = searchIssue.value;
+    showLoading();
+    const res = await fetch(
+      `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchText}`,
+    );
+    const resdata = await res.json();
+   
+    hideLoading();
+    displayIssues(resdata.data);
+
+
+}
+
 
 
 async function openIssueModal(cardId) {
@@ -111,6 +127,16 @@ function displayIssues(issues) {
     
     document.getElementById("issue-count").innerText = issues.length;
     cardContainer.innerHTML=""; 
+
+    if (issues.length === 0) {
+        cardContainer.innerHTML = `
+            <div class="col-span-3 flex flex-col justify-center items-center py-20 gap-3">
+                <img src="images/file.png" alt>
+                <p class="text-2xl font-semibold text-gray-400">No issues found</p> 
+            </div>
+        `;
+        return;
+    }
 
   issues.forEach((issue) => {
     // console.log(issue);
