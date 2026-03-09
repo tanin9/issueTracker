@@ -37,7 +37,7 @@ async function openIssueModal(cardId) {
                         </form>
                         <h3 class="text-2xl font-bold py-5 ">${issue.title}</h3>
                         <div
-                            class="  mt-2 flex gap-2 justify-start items-center ">
+                            class="  mt-2 md:flex gap-2 justify-start items-center ">
                             <p
                                 class="${issue.status === "open" ? "bg-green-700" : "bg-purple-700"} text-white px-3 rounded-full">${issue.status === "open" ? "Opened" : "Closed"}
                             </p>
@@ -46,7 +46,7 @@ async function openIssueModal(cardId) {
 
                         </div>
                         <div
-                            class="  mt-4 flex gap-2 justify-start items-center ">
+                            class="  mt-4 md:flex space-y-2 gap-2 justify-start items-center ">
                             ${fixLavels(issue.labels)}</div>
                         <p class="py-4">${issue.description}</p>
 
@@ -131,7 +131,7 @@ function displayIssues(issues) {
                             <p class="text-[#12px] regular-text-color line-clamp-2">${issue.description}</p>
                         </div>
                   
-                        <div class="labels flex gap-2">
+                        <div class="labels space-y-3 md:flex gap-2">
                             ${fixLavels(issue.labels)}
                             </div>
 
@@ -231,12 +231,12 @@ function hideLoading() {
 }
 function toggole(btnId) {
   document.getElementById("all-filter-button").className =
-    "w-25 btn text-[#64748B]";
-  document.getElementById("open-button").className = "w-25 btn text-[#64748B]";
+    "w-15 md:w-25 btn text-[#64748B]";
+  document.getElementById("open-button").className = "w-15 md:w-25 btn text-[#64748B]";
   document.getElementById("closed-button").className =
-    "w-25 btn text-[#64748B]";
+    "w-15 md:w-25 btn text-[#64748B]";
   document.getElementById(btnId).className =
-    "btn btn-primary text-amber-50 w-25";
+    "btn btn-primary text-amber-50 w-15 md:w-25";
 
   if (btnId === "all-filter-button") {
     loadIssues();

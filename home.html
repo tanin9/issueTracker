@@ -47,13 +47,13 @@
     <body class="container mx-auto ">
         <main>
 
-            <section class="navbar bg-base-100 shadow-sm sticky top-0 z-10 ">
+            <section class="navbar bg-base-100 shadow-sm sticky top-0 z-10 gr ">
                 
                 <div class="w-10 rounded-full mx-1.5">
                     <img src="images/github-logo.png" alt />
                 </div>
                 <div class="flex-1 px-1.5">
-                    <p class="font-semibold text-2xl">GitHub Issues
+                    <p class="font-semibold md:text-2xl">GitHub Issues
                         Tracker</p>
                 </div>
                 <div class="flex gap-2 input input-bordered"> <i
@@ -71,33 +71,33 @@
                 class=" rounded-[5px] px-4 ">
 
                 <div
-                    class="flex flex-row gap-4 rounded-[5px] px-8 mx-10 py-4 mt-4 bg-white shadow-xl">
+                    class="flex flex-row justify-start gap-4 rounded-[5px]  px-4 md:px-8 md:mx-10 py-4 mt-4 bg-white shadow-xl">
                     <button onclick="toggole('all-filter-button')"
                         id="all-filter-button"
-                        class="btn btn-primary text-amber-50 w-25">All</button>
+                        class="btn btn-primary text-amber-50 w-17 md:w-25">All</button>
                     <button onclick="toggole('open-button')"
                         id="open-button"
-                        class="btn text-[#64748B] w-25">Open</button>
+                        class="btn text-[#64748B] md:w-25">Open</button>
                     <button onclick="toggole('closed-button')"
                         id="closed-button"
-                        class="btn text-[#64748B] w-25">Closed</button>
+                        class="btn text-[#64748B] md:w-25">Closed</button>
                 </div>
 
                 <div
-                    class=" px-7  mx-10 py-4 mt-3 bg-white flex justify-between rounded-[5px] shadow-xl">
+                    class=" px-7  md:mx-10 py-4 mt-3 bg-white flex justify-between rounded-[5px] shadow-xl">
                     <div class="flex gap-3 items-center">
                         <div class="bg-[#ECE4FF] p-1 rounded-full"> <img
                                 src="images/Aperture.png" alt></div>
-                        <div><p class="text-2xl font-semibold"><span
+                        <div><p class="text-xl md:text-2xl font-semibold"><span
                                     id="issue-count">0</span> Issues</p>
                             <p class="regular-text-color">Track and manage your
                                 project issues</p></div>
                     </div>
-                    <div class="flex gap-5 items-center">
+                    <div class="md:flex gap-5 items-center">
                         <div class="flex gap-1 items-center"><div
-                                class="p-1.5 border-2 bg-green-400 rounded-full"></div><span>open</span></div>
+                                class="p-1.5  bg-green-400 rounded-full"></div><span>open</span></div>
                         <div class="flex gap-1 items-center"><div
-                                class="p-1.5 border-2 bg-purple-600 rounded-full"></div><span>closed</span></div>
+                                class="p-1.5  bg-purple-600 rounded-full"></div><span>closed</span></div>
                     </div>
 
                 </div>
@@ -116,7 +116,7 @@
             </div>
 
             <section id="issue-cards-container"
-                class="  shadow-xl/20  px-10 mx-15 py-4 mt-10 mb-20 bg-white rounded-[5px] grid  sm:grid-cols-2 md:grid-cols-3 gap-4">
+                class="  shadow-xl/20  px-10 md:mx-15 py-4 mt-10 mb-20 bg-white rounded-[5px] grid  sm:grid-cols-1 md:grid-cols-3 gap-4">
 
             </section>
             <section class="  mx-30 py-4 mt-10">
