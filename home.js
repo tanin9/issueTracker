@@ -1,3 +1,5 @@
+// https://superlative-pastelito-f8f82c.netlify.app/
+
 
 const statusContainer = document.getElementById("status-btn");
 const cardContainer = document.getElementById("issue-cards-container");
@@ -18,8 +20,6 @@ async function searchIssues() {
 
 
 }
-
-
 
 async function openIssueModal(cardId) {
     // console.log(cardId);
@@ -69,19 +69,7 @@ async function openIssueModal(cardId) {
     
     issueModal.showModal();
 }
-
-
-function showLoading() {
-  loadingSpinner.classList.remove("hidden");
-  loadingSpinner.classList.add("flex");
-  cardContainer.innerHTML = "";
-}
-function hideLoading() {
-  loadingSpinner.classList.add("hidden");
-}
-
-
-
+ 
 async function filterIssues(status) {
     showLoading();
   const res = await fetch(
@@ -93,23 +81,7 @@ async function filterIssues(status) {
     displayIssues(filterData);
 
 }
-function toggole(btnId) {
-  document.getElementById("all-filter-button").className = "w-25 btn text-[#64748B]";
-  document.getElementById("open-button").className = "w-25 btn text-[#64748B]";
-  document.getElementById("closed-button").className = "w-25 btn text-[#64748B]";
-  document.getElementById(btnId).className =
-    "btn btn-primary text-amber-50 w-25";
 
-  if (btnId === "all-filter-button") {
-    loadIssues();
-  }
-  if (btnId === "open-button") {
-    filterIssues("open");
-  }
-  if (btnId === "closed-button") {
-    filterIssues("closed");
-  }
-}
 
 async function loadIssues() {
   showLoading();
@@ -248,6 +220,33 @@ function fixLavels(fl) {
            <p>${lable.toUpperCase()}</p></div> `;
   });
   return div;
+}
+function showLoading() {
+  loadingSpinner.classList.remove("hidden");
+  loadingSpinner.classList.add("flex");
+  cardContainer.innerHTML = "";
+}
+function hideLoading() {
+  loadingSpinner.classList.add("hidden");
+}
+function toggole(btnId) {
+  document.getElementById("all-filter-button").className =
+    "w-25 btn text-[#64748B]";
+  document.getElementById("open-button").className = "w-25 btn text-[#64748B]";
+  document.getElementById("closed-button").className =
+    "w-25 btn text-[#64748B]";
+  document.getElementById(btnId).className =
+    "btn btn-primary text-amber-50 w-25";
+
+  if (btnId === "all-filter-button") {
+    loadIssues();
+  }
+  if (btnId === "open-button") {
+    filterIssues("open");
+  }
+  if (btnId === "closed-button") {
+    filterIssues("closed");
+  }
 }
 
 
